@@ -1,0 +1,135 @@
+<!DOCTYPE HTML>
+<!--
+	Hielo by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+	<head>
+		<title>Bethany's Research</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body class="subpage">
+
+		<!-- Header -->
+			<header id="header">
+				<!-- <div class="logo"><a href="index.html">Hielo <span>by TEMPLATED</span></a></div> -->
+				<a href="#menu">Menu</a>
+			</header>
+
+		<!-- Nav -->
+			<nav id="menu">
+				<ul class="links">
+					<li><a href="index.html">Home</a></li>
+					<li><a href="research.html">Research</a></li>
+					<li><a href="cv.html">About</a></li>
+					<li><a href="awesome.html">Awesome Finds</a></li>
+<!-- 					<li><a href="elements.html">Elements</a></li> -->
+				</ul>
+			</nav>
+
+		<!-- One -->
+			<section id="One" class="wrapper style3">
+				<div class="inner">
+					<header class="align-center">
+						<p>"Being a scientist and staring immensity and eternity in the face every day is as grand and inspiring as it gets."<br/>-Carolyn Porco</p>
+						<h2>Research Endeavors</h2>
+					</header>
+				</div>
+			</section>
+
+		<!-- Two -->
+			<section id="two" class="wrapper style2">
+				<div class="inner">
+					<div class="box">
+						<div class="content">
+							<header class="align-center">
+								<p>The remains of a dead star harbors dust so cold, it is difficult to even see.</p>
+								<h2>1E0102.2-7219</h2>
+							</header>
+							<p> Dust is the ultimate underweight champion of the universe. Particles 1000 times smaller than the width of a single human hair influence every aspect of the Universe. If you want to study astronomy, dust is unavoidable. It likely accounts for less than a percent of the Universe and yet, you <i>have</i> to account for it. It reddens, scatters, and absorbs light from stars. It wingmans for hydrogen, allowing molecular hydrogen to form efficiently by shielding it from radiation and giving it a site to form. Dust is tiny, but it has got a huge heart. Despite its disproportional significance, it is not entirely understood where it all comes from. </p>
+							<p>Dust is mainly produced during supernovae events, in the circumstellar envelope of asymptotic giant branch stars, and grows in the insterstellar medium, but some submillimeter high redshift galaxies (who are too early for the lower mass star option) are observed to be extremely dusty. That leaves supernovae as the likely culprit for the vast majority of the dust in those galaxies. But when we look at supernovae close to us, it doesn't look like they produce much at all. This is known as the <a href="https://academic.oup.com/mnras/article/441/2/1040/1063524">dust budget crisis.</a> Where is all the dust, especially in the early Universe, coming from? To answer this question, we need to look much closer at these supernovae events. </p> 
+							<p><span class="image fit"><img src="images/e0102-bkgd.png" alt="" />Figure 1: E0102 observations (from top to bottom) at 24, 70, 100, and 160 &mu;ms. The first column contains the original images. The second column is the modeled background. The third column is the subtracted remnant.</span>
+							</p> 
+						
+
+							<p>1E0102.2-7219, or for simplicity E0102, is a relatively young remnant on the order of <a href="http://articles.adsabs.harvard.edu/cgi-bin/nph-iarticle_query?1983ApJ...268L..11T&amp;data_type=PDF_HIGH&amp;whole_paper=YES&amp;type=PRINTER&amp;filetype=.pdf">about 1,000 years old.</a> This youth is a good thing because it means the reverse shock from the initial explosion hasn't made its way into the ejecta to destroy the initial dust created by the remnant. Observations of young remnants such as <a hrer="http://science.sciencemag.org/content/333/6047/1258.full">1987A,</a> and <a href="https://academic.oup.com/mnras/article-abstract/465/3/3309/2417062?redirectedFrom=PDF">Casseiopeia A,</a> have actually shown a surprising amount of dust so we expect that E0102 would be no different. Yet <a href="http://iopscience.iop.org/article/10.1088/0004-637X/696/2/2138/pdf">previous measurements</a> predicted that this would not be the case. For the first time, we present new Herschel observations of E0102 at 70, 100, and 160 &mu;m wavelengths and with Spitzer 24 &mu;m observations we detect a substantial body of cold dust previously undetected in the remnant! </p> 
+							<p> The biggest challenge in measuring the amount of dust produced by a supernovae remnant is being able to adequately remove a spatially variable background. E0102 is in the Small Magellanic Cloud and the bright corner seen in Figure 1 is the N76 nebula. It's important that any foreground or background dust emission created by E0102's environment be carefully considered before measurements can be made. I developed and utilized a potentially new (to astronomy) strategy of removing the background. As it turns out, this strategy is already known in some engineering and image analyses fields as <i>non linear diffusion-based inpainting</i>. (For a review of image inpainting practices see: <a href="https://www.researchgate.net/publication/260722824/download">Image Inpainting: Overview and Recent Advances</a> by Christine Guillemot and Olivier Le Meur.) This method is essentially an iterative solution to Laplace's equation by discretizing the heat equation using backward finite difference in time and second order central difference in space. 
+
+							<!-- Preformatted Code -->
+								<h3>Look Ma, I made a Supernova Disappear:</h3>
+								<pre><code>
+def StepForward(data, timestep) :
+    xLim, yLim, junk = np.shape(data)
+    # Alpha should be small to slow convergence.
+    alpha = 0.1
+    for i in range(1, xLim-1) :
+        for j in range(1, yLim-1) :
+            # Discretizing heat equation
+            # Backward Finite Difference in Time
+            # Second Order Central Difference in Space
+            data[i,j,timestep] = data[i,j,timestep-1] + alpha * ((data[i+1,j,timestep-1] - 2*data[i,j,timestep-1] +
+                    		 data[i-1,j,timestep-1]) + (data[i,j+1,timestep-1] - 2*data[i,j,timestep-1] 
+                    		 + data[i,j-1,timestep-1]))
+								</code></pre>
+	
+							The process utilizes all information from the boundary of the supernova to create a smooth function  and  is  most  effective  in  backgrounds  that  do
+							not contain high frequency variations. Unfortunately for 100 and 160 &mu;m images, their resolution is too poor to use this method as the divergence converages too quickly. In order to remove the background while using as much information about the remnant as possible, we solved for a scale factor between the 70 &mu;m modeled background and 100 and 160 &mu;m images. This method does assume that temperature doesn't fluctuate too much in the remnant. The modeled backgrounds can be seen in the second column of Figure 1. In Figure 2 the final result of the background subtracted image is shown after those subtractions have been convolved to the 160 &mu;m resolution. This resolution is the poorest of the four images and ensures that we take our measurements from equivalant information.</p>
+
+
+
+							<p><span class="image fit"><img src="images/e0102-cr.png" alt="" /> Figure 2: Supernovae remnants with background subtracted, convolved and regridded to the same lower resolution of the 160 &mu;m image. The colorbar is the same for each of these four images with dark purple being the lowest and yellow being the highest intensity values in each infrared map.</span></p>
+
+							<p>
+							The final step is to take our measurements and model a modified black body equation to the spectral intensities in each image. The most straightforward way is to take an average of each image and fit them as seen in Figure 3. Depending on decisions we make about the error in our methodology, we arrive between 0.10 and 0.16 of a solar mass of dust in the remnant. Compared to the previous prediciton of ~0.003 solar masses, this is a substantial amount of dust! The second consideration is to fit each pixel in the remnant individually with constraints that we not include pixels that are below a detection limit of 2 sigma. This is the current last bit of the project that is being worked on. After evaluating the final measurements and our associated errors we will be free to submit!
+						</p>
+						<p>
+							<span class="image fit"><img src="images/e0102-gensed.png" alt="" />Figure 3: Average intensity in Spitzer 24 &mu;m image and in Herschel 70, 100, and 160 &mu;m images fit by a modified black body spectrum. The error bars here are from the standard deviation in a blank sky region and a 10% calibration error. Using these errors we achieve at least a tenth of a solar mass of dust in the supernova remnant.</span>
+						</p>	
+							
+						<p> The paper for this project is currently in prep. </p>
+						<p>This project is advised by <a href="https://karinsandstrom.github.io/">Dr. Karin Sandstrom</a> at the University of California in San Diego. I would like to thank her for years of astonishing amounts of patience, and for teaching me not to name my variable's "chai"or call comments "hashtags" as my trecherous millenial brain is wont to do. </p>
+						<p>I would also like to acknowledge <a href="https://www.linkedin.com/in/armandoarmijo/">Armando Armijo</a> for his lessons in programming and for enabling me to prentiously call hashtags: "octothorpes." </p>
+						<p>Finally, I would like to acknowledge <a href="https://www.linkedin.com/in/clayton-anderson-524265112/">Clayton K. Anderson</a> for his unwavering support and advice on writing algorithms, creating to do lists and for distracting me with quirky machine learning projects.</p>	
+						</div>
+					</div>
+				</div>
+			</section>
+
+		<!-- One -->
+			<section id="One" class="wrapper style3">
+				<div class="inner">
+					<header class="align-center">
+<!-- 						<p>Eleifend vitae urna</p>
+						<h2>Generic Page Template</h2> -->
+					</header>
+				</div>
+			</section>
+
+		<!-- Footer -->
+			<footer id="footer">
+				<div class="container">
+					<ul class="icons">
+						<li><a href="https://twitter.com/BethanyALudwig" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+						<li><a href="https://www.facebook.com/bethany.a.ludwig" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+						<li><a href="https://www.instagram.com/annie_blud/" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+						<li><a href="mailto:ludwig@astro.utoronto.ca" class="icon fa-envelope-o"><span class="label">Email</span></a></li>
+						<li><a href="https://www.linkedin.com/in/bethany-ludwig-b6b48793/" class="icon fa-linkedin"><span class="label">Linkedin</span></a></li>
+					</ul>
+				</div>
+				<div class="copyright">
+					&copy; All rights reserved.
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
